@@ -21,7 +21,7 @@ public class RecipeDisablingMixin {
     @Inject(at = @At(value = "RETURN"), method = "getFirstMatch(Lnet/minecraft/recipe/RecipeType;Lnet/minecraft/inventory/Inventory;Lnet/minecraft/world/World;)Ljava/util/Optional;", cancellable = true)
     private <I extends Inventory, T extends Recipe<I>> void item_obliterator$getRecipeForRecipeType(RecipeType<T> recipe, I inventory, World world, CallbackInfoReturnable<Optional<T>> cir) {
         cir.getReturnValue().ifPresent(value ->
-            cir.setReturnValue(Utils.shouldRecipeBeDisabled(value.getOutput(world.getRegistryManager()).getItem()) ? Optional.empty() : Optional.of(value)));
+            cir.setReturnValue(Utils.shouldRecipeBeDisabled(value.getResult(world.getRegistryManager()).getItem()) ? Optional.empty() : Optional.of(value)));
     }
     
     @Inject(at = @At(value = "RETURN"), method = "getAllMatches", cancellable = true)
