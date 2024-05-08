@@ -23,7 +23,6 @@ public class ServerPlayerMixin {
         
         if (Utils.isDisabled(item)) {
             item.setCount(0);
-            player.sendMessageToClient(Text.translatable("item_obliterator.disabled_item"), true);
         }
     }
 
@@ -35,7 +34,6 @@ public class ServerPlayerMixin {
         String itemid = Utils.getItemId(item);
 
         if (check(itemid)) {
-            player.sendMessageToClient(Text.translatable("item_obliterator.disabled_attacks"), true);
             ci.cancel();
         }
     }
